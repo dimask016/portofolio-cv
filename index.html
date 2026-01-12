@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimas Kurniawan - IT System Administrator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #f9f9f9;
+            --dark-color: #2c3e50;
+            --gray-color: #95a5a6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Hero */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary-color);
+            overflow: hidden;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .profile-img i {
+            font-size: 120px;
+            color: var(--primary-color);
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-left: 3rem;
+            min-width: 300px;
+        }
+        
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-item i {
+            color: var(--secondary-color);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            scroll-margin-top: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            font-size: 2rem;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Summary Section */
+        .summary {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Competencies */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .competency-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .competency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .competency-card i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Experience & Education */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            transform: rotate(45deg);
+            top: 15px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .project-header h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-year {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .project-body {
+            padding: 1.5rem;
+        }
+        
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tool-tag {
+            background-color: #e8f4fc;
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Certifications */
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .cert-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .cert-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .cert-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animations for scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-left: 0;
+                margin-top: 2rem;
+            }
+            
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 0.8rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .profile-img i {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Hero -->
+    <header id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="hero-text">
+                    <h1>Dimas Kurniawan</h1>
+                    <p class="title">ICT System Administrator</p>
+                    <p>Dedicated and detail-oriented ICT System Administrator with over 14 years of experience managing, securing, and optimizing Windows and Linux-based server infrastructure.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jakarta, Indonesia</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+62-821-8960-6233</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dimas.mbs@email.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Dimas<span>Kurniawan</span></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Professional Summary -->
+    <section id="summary" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Summary</h2>
+            </div>
+            <div class="summary">
+                <p>Dedicated and detail-oriented ICT System Administrator with over 14 years of experience managing, securing, and optimizing Windows and Linux-based server infrastructure. Proven expertise in server deployment, Active Directory, virtualization (VMware/Hyper-V), backup solutions, and system monitoring. Strong troubleshooting skills with a commitment to high system uptime and performance.</p>
+            </div>
+            
+            <div class="section-title">
+                <h2>Core Competencies</h2>
+            </div>
+            <div class="competencies-grid">
+                <div class="competency-card animate-on-scroll">
+                    <i class="fas fa-server"></i>
+                    <h3>Server Administration</h3>
+                    <p>Windows & Linux Server, Active Directory, Group Policy</p>
+                </div>
+                <div class="competency-card animate-on-scroll">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Virtualization</h3>
+                    <p>VMware & Hyper-V, Backup & Disaster Recovery</p>
+                </div>
+                <div class="competency-card animate-on-scroll">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Security</h3>
+                    <p>IT Security & Hardening, EDR, PAM Implementation</p>
+                </div>
+                <div class="competency-card animate-on-scroll">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Networking</h3>
+                    <p>Cisco & Mikrotik, Routing, Firewall, VPN Setup</p>
+                </div>
+                <div class="competency-card animate-on-scroll">
+                    <i class="fas fa-database"></i>
+                    <h3>Database</h3>
+                    <p>SQL Server, MySQL, PostgreSQL Administration</p>
+                </div>
+                <div class="competency-card animate-on-scroll">
+                    <i class="fas fa-tools"></i>
+                    <h3>Monitoring & Tools</h3>
+                    <p>SolarWinds, Zabbix, Acronis, Veeam, Cloudflare</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>ICT Server</h3>
+                        <p class="timeline-company">PT Antam tbk, Jakarta</p>
+                        <p class="timeline-date">Jan 2022 – July 2025</p>
+                        <ul>
+                            <li>Administered and maintained over 100 Windows and Linux servers across multiple environments</li>
+                            <li>Implemented Active Directory policies, DNS/DHCP, and user access management</li>
+                            <li>Configured and managed virtualization infrastructure using VMware ESXi and Hyper-V</li>
+                            <li>Deployed and maintained backup solutions using Acronis Cyber Protect</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Aplikasi dan Database</h3>
+                        <p class="timeline-company">PT Antam tbk, Jakarta</p>
+                        <p class="timeline-date">Mar 2019 – Jan 2022</p>
+                        <ul>
+                            <li>Responsible for installing, configuring, and maintaining business applications</li>
+                            <li>Database administration for SQL Server, MySQL, PostgreSQL</li>
+                            <li>Ensured database security and implemented backup/recovery strategies</li>
+                            <li>Prepared documentation and provided technical training</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Network and Technician</h3>
+                        <p class="timeline-company">PT Antam tbk, Kolaka, Sulawesi Tenggara</p>
+                        <p class="timeline-date">Apr 2011 – Mar 2019</p>
+                        <ul>
+                            <li>Provided desktop, network, and server support to internal users</li>
+                            <li>Installed and configured OS, drivers, and network printers</li>
+                            <li>Maintained Cisco Router, Network Switches, and Wireless Technology</li>
+                            <li>Set up and managed CACTI, SNMP, and Solarwind systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Portfolio</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3>Microsoft 365 Backup Implementation</h3>
+                        <p class="project-year">2025</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Implemented a comprehensive backup system for Microsoft 365 services, covering user accounts, OneDrive, SharePoint, and Teams.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">Acronis Cyber Protect</span>
+                            <span class="tool-tag">M365</span>
+                            <span class="tool-tag">Backup</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3>Website Infrastructure Migration to Cloud</h3>
+                        <p class="project-year">2022-2025</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Migrated internal web applications from on-premises servers to Google Cloud Platform (GCP), integrated with Cloudflare.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">GCP</span>
+                            <span class="tool-tag">Cloudflare</span>
+                            <span class="tool-tag">Cloud SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3>Privileged Access Management (PAM)</h3>
+                        <p class="project-year">2024</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Implemented PAM tools to secure and log privileged remote access to servers for auditing and compliance.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">Senhasegura</span>
+                            <span class="tool-tag">Security</span>
+                            <span class="tool-tag">Access Control</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3>Red Hat Infrastructure & OpenShift</h3>
+                        <p class="project-year">2023</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Built server infrastructure using Red Hat Enterprise Linux and OpenShift for modern application deployment.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">Red Hat</span>
+                            <span class="tool-tag">OpenShift</span>
+                            <span class="tool-tag">ELK Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Bachelor's Degree in Information Technology</h3>
+                        <p class="timeline-company">Cakrawala University</p>
+                        <p class="timeline-date">2025 – Present</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Associate's Degree in Information Technology</h3>
+                        <p class="timeline-company">LP3I Bekasi</p>
+                        <p class="timeline-date">2005 – 2008</p>
+                        <p>GPA: 3.24</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications</h2>
+            </div>
+            <div class="certifications">
+                <div class="cert-card animate-on-scroll">
+                    <i class="fab fa-microsoft"></i>
+                    <h3>MCSA: Windows Server</h3>
+                    <p>Microsoft</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>MTCNA</h3>
+                    <p>MikroTik Certified</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-certificate"></i>
+                    <h3>ITIL v4 Foundation</h3>
+                    <p>AXELOS</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>CompTIA Security+</h3>
+                    <p>CompTIA</p>
+                </div>
+                <div class="cert-card animate-on-scroll">
+                    <i class="fab fa-aws"></i>
+                    <h3>AWS Cloud Practitioner</h3>
+                    <p>Amazon Web Services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+                    <p><i class="fas fa-phone"></i> +62-821-8960-6233</p>
+                    <p><i class="fas fa-envelope"></i> dimas.mbs@email.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <p><a href="https://linkedin.com/in/dimaz-kurniawan" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+                    <p><a href="https://dimaz7474.github.io/Mrs.DK/" target="_blank"><i class="fab fa-github"></i> GitHub</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Languages</h3>
+                    <p>Bahasa Indonesia (Native)</p>
+                    <p>English (Professional Working)</p>
+                    <p>TOEIC Score: 545</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Dimas Kurniawan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animate-on-scroll elements
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Stagger animation for competency cards
+        const competencyCards = document.querySelectorAll('.competency-card');
+        competencyCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+        
+        // Stagger animation for project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+        
+        // Stagger animation for certification cards
+        const certCards = document.querySelectorAll('.cert-card');
+        certCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
