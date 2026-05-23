@@ -73,6 +73,7 @@
             justify-content: center;
             box-shadow: var(--shadow);
             animation: float 3s ease-in-out infinite;
+            
         }
         
         @keyframes float {
@@ -84,7 +85,12 @@
             font-size: 120px;
             color: var(--primary-color);
         }
-        
+        .profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* memastikan gambar memenuhi area tanpa distorsi */
+    display: block;
+}
         .hero-text {
             flex: 1;
             padding-left: 3rem;
@@ -623,9 +629,9 @@
     <header id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="profile-img">
-                    <i class="fas fa-user-tie"></i>
-                </div>
+               <div class="profile-img">
+    <img src="foto-saya.jpg" alt="Foto Dimas Kurniawan">
+</div>
                 <div class="hero-text">
                     <h1>Dimas Kurniawan</h1>
                     <p class="title">ICT System Administrator & Data Center Engineer</p>
